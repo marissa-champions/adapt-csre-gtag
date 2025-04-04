@@ -1,0 +1,12 @@
+{
+  "name": "adapt-csre-gtag",
+  "version": "1.1.0",
+  "framework": ">=5.0.0",
+  "displayName": "Google Analytics 4",
+  "extension": "gtag",
+  "targetAttribute": "_gtag",
+  "description": "Google Analytics 4 in Adapt",
+  "main": "/js/adapt-csre-gtag.js",
+  "keywords": ["adapt-plugin", "adapt-extension"],
+  "license": "GPL-3.0"
+}
