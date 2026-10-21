@@ -18,16 +18,26 @@ Triggered when the course initializes.
 Triggered when a user answers a question.
 - `courseTitle`: The title of the course
 - `id`: The question's `_id`
-- `title`: The question's title (if present)
+- `title`: The question's title (if present), as plain text, cut to 100 characters
 - `response`: The learner's answer
 - `result`: `true` or `false` for correct/incorrect
 - `responseType`: Type of interaction
+- `responseText`: The answer as readable text: the chosen option(s) for multiple choice, `item number: option` pairs for matching (for example `1: Agent | 2: Principal`), otherwise the raw response. Plain text, cut to 100 characters (GA4's limit)
 
 #### `tracking:complete`
 Triggered when the course is marked complete.
 - `courseTitle`: The title of the course
 - `title`: The title of the course (same value; kept for GTM variables set up for 1.0.x)
 - `status`: The course completion status (`passed`, `failed`, `incomplete`, etc.)
+
+Not sent while Spoor restores a learner's saved progress, so reopening a finished module doesn't count as a new completion.
+
+#### `assessment:complete`
+Triggered when the learner submits the module's assessment.
+- `courseTitle`: The title of the course
+- `isPass`: `true` or `false`
+- `score`, `maxScore`, `scoreAsPercent`
+- `correctCount`, `questionCount`, `correctAsPercent`
 
 ---
 
