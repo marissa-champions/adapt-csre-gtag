@@ -49,8 +49,11 @@ class AdaptGtag extends Backbone.Controller {
   onTrackingComplete(completionData) {
     if (!this.config?._isEnabled) return;
 
+    // `title` is kept alongside `courseTitle` because 1.0.x sent it under
+    // that name and existing GTM variables read it.
     const tracking = {
       courseTitle: Adapt.course.get('title'),
+      title: Adapt.course.get('title'),
       status: completionData.status?.asLowerCase || 'unknown'
     };
 
@@ -68,7 +71,8 @@ class AdaptGtag extends Backbone.Controller {
       id: questionView.model.get('_id'),
       title: questionView.model.get('title'),
       response: questionView.getResponse(),
-      result: questionView.isCorrect()
+      result: questionView.isCorrect(),
+      responseType
     };
 
     this.sendEvent('questionView:recordInteraction', interaction);

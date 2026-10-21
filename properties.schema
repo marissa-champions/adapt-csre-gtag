@@ -23,12 +23,26 @@
                 "_measurementId": {
                   "type": "string",
                   "required": true,
-                  "title": "Measurement ID",
+                  "title": "Tag Manager container ID",
                   "inputType": "Text",
                   "validators": [
                     "required"
                   ],
-                  "help": "Enter the measurement ID of the Google Analytics property to track"
+                  "help": "The Google Tag Manager container ID, starting with GTM- (for example GTM-XXXXXXX)"
+                },
+                "_injectSnippets": {
+                  "type": "boolean",
+                  "default": true,
+                  "title": "Add the Tag Manager snippet",
+                  "inputType": "Checkbox",
+                  "help": "Turn off only if the page hosting the course already loads this Tag Manager container"
+                },
+                "_debug": {
+                  "type": "boolean",
+                  "default": false,
+                  "title": "Debug logging",
+                  "inputType": "Checkbox",
+                  "help": "Log every event sent to Tag Manager in the browser console. Leave off for published courses"
                 }
               }
             }

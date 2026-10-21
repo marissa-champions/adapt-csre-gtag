@@ -21,11 +21,25 @@ Triggered when a user answers a question.
 - `title`: The question's title (if present)
 - `response`: The learner's answer
 - `result`: `true` or `false` for correct/incorrect
-- `responseType`: Type of interaction (or `'unknown'`)
+- `responseType`: Type of interaction
 
 #### `tracking:complete`
 Triggered when the course is marked complete.
 - `courseTitle`: The title of the course
+- `title`: The title of the course (same value; kept for GTM variables set up for 1.0.x)
 - `status`: The course completion status (`passed`, `failed`, `incomplete`, etc.)
 
 ---
+
+## Settings
+
+- `_isEnabled`: turn tracking on for the course.
+- `_measurementId`: the Google Tag Manager container ID (`GTM-…`). The name is kept from earlier versions so existing courses keep their value.
+- `_injectSnippets` (default `true`): add the Tag Manager snippet to the page. Turn off only when the hosting page already loads the container.
+- `_debug` (default `false`): log each event sent to `window.dataLayer` in the browser console.
+
+## Upgrading from 1.0.x
+
+The package name is still `adapt-gtag`, so the authoring tool upgrades the existing plugin in place.
+
+1.0.x registered its `tracking:complete` and `questionView:recordInteraction` listeners twice, so each was pushed to the dataLayer twice. From 1.1.0 each is sent once, so counts in Google Analytics drop by about half after courses are republished.

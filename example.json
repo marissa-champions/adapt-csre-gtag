@@ -2,6 +2,7 @@
   "_gtag": {
     "_isEnabled": true,
     "_measurementId": "",
+    "_injectSnippets": true,
     "_debug": false
   }
 }
